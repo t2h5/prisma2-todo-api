@@ -40,7 +40,9 @@ $ curl 'http://localhost:3000/'
 hello
 ```
 
-### create user
+### operations
+
+- create user
 
 ```bash
 $ curl -XPOST 'http://localhost:3000/users' -H 'Content-type: application/json' -d '{"name": "me"}'
@@ -48,7 +50,15 @@ $ curl -XPOST 'http://localhost:3000/users' -H 'Content-type: application/json' 
 {"name":"me","user_id":1}
 ```
 
-### create user's todo
+- get user
+
+```bash
+$ curl -XPOST 'http://localhost:3000/users/1'
+
+{"name":"me","user_id":1}
+```
+
+- create user's todo
 
 ```bash
 $ curl -XPOST 'http://localhost:3000/users/1/todos' -H 'Content-type: application/json' -d '{"text": "say hello"}'
@@ -56,10 +66,33 @@ $ curl -XPOST 'http://localhost:3000/users/1/todos' -H 'Content-type: applicatio
 {"text":"say hello","todo_id":1}
 ```
 
-### get user's todos
+- get user's todos
 
 ```bash
 $ curl 'http://localhost:3000/users/1/todos'
 
 [{"text":"say hello","todo_id":1}]
 ```
+
+- get user's todo
+
+```bash
+$ curl 'http://localhost:3000/users/1/todos/1'
+
+{"text":"say hello","todo_id":1}
+```
+
+- update user's todo
+
+```bash
+$ curl -XPUT 'http://localhost:3000/users/1/todos/1' -H 'Content-type: application/json' -d '{"text": "say good bye"}'
+
+{"text":"say good bye","todo_id":1}
+```
+
+- delete user's todo
+
+```bash
+$ curl -XDELETE 'http://localhost:3000/users/1/todos/1'
+```
+
