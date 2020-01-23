@@ -7,6 +7,10 @@ const app = express()
 
 app.use(bodyParser.json())
 
+app.get(`/`, (req, res) => {
+  res.send('hello')
+})
+
 app.post(`/users`, async (req, res) => {
   try {
     const result = await prisma.users.create({
