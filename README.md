@@ -57,7 +57,7 @@ $ curl -XPOST 'http://localhost:3000/users' -H 'Content-type: application/json' 
 - get user
 
 ```bash
-$ curl -XPOST 'http://localhost:3000/users/1'
+$ curl 'http://localhost:3000/users/1'
 
 {"name":"me","user_id":1}
 ```
