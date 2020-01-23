@@ -8,7 +8,9 @@
     "generate": "prisma2 generate",
     "postinstall": "npm -s run generate",
     "introspect": "prisma2 introspect",
-    "dev": "ts-node src/index.ts"
+    "dev": "ts-node src/index.ts",
+    "clean": "rm -rf dist",
+    "build": "npm -s run clean && npm -s run generate && tsc"
   },
   "dependencies": {
     "@prisma/client": "2.0.0-preview020.1",
