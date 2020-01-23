@@ -116,7 +116,7 @@ app.delete(`/users/:user_id/todos/:todo_id`, async (req, res) => {
     },
   })
   if (todos.length === 1) {
-    const todo = await prisma.todoItems.delete({
+    await prisma.todoItems.delete({
       where: {
         todo_id: todos[0].todo_id,
       },
@@ -128,5 +128,5 @@ app.delete(`/users/:user_id/todos/:todo_id`, async (req, res) => {
 })
 
 const server = app.listen(3000, () =>
-  console.log('server ready at: http:localhost:3000'),
+  console.log('server ready at: http://localhost:3000'),
 )

@@ -2,6 +2,10 @@
 
 Sample todo management api (REST) using prisma2.
 
+- https://github.com/prisma/prisma2
+  - Prisma Client JS
+  - Prisma Studio
+
 ## setup
 
 ### start postgres container
