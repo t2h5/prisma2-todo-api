@@ -1,13 +1,13 @@
-CREATE TABLE users (
+CREATE TABLE "User" (
     user_id bigserial PRIMARY KEY,
     name varchar(100) NOT NULL
 );
 
-CREATE TABLE todos (
+CREATE TABLE "TodoItem" (
     todo_id bigserial PRIMARY KEY,
-    user_id bigint NOT NULL REFERENCES users (user_id) ON DELETE CASCADE,
+    user_id bigint NOT NULL REFERENCES "User" (user_id) ON DELETE CASCADE,
     text text NOT NULL
 );
 
-CREATE INDEX todos_user_id_idx ON todos (user_id);
+CREATE INDEX todo_item_user_id_idx ON "TodoItem" (user_id);
 

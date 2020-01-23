@@ -7,14 +7,14 @@ datasource db {
   url      = "postgresql://prisma:prisma@localhost:5432/prisma?schema=public"
 }
 
-model todos {
+model TodoItem {
   text    String
-  todo_id Int    @id
-  user_id users
+  todo_id Int    @id @default(cuid())
+  user_id User
 }
 
-model users {
-  name    String
-  user_id Int     @id @default(cuid())
-  todoses todos[]
+model User {
+  name      String
+  user_id   Int        @id @default(cuid())
+  todoItems TodoItem[]
 }
