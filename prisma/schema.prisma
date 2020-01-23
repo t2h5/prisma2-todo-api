@@ -9,12 +9,12 @@ datasource db {
 
 model TodoItem {
   text    String
-  todo_id Int    @id @default(cuid())
+  todo_id Int    @id @default(autoincrement())
   user_id User
 }
 
 model User {
   name      String
-  user_id   Int        @id @default(cuid())
+  user_id   Int        @id @default(autoincrement())
   todoItems TodoItem[]
 }
