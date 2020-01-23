@@ -14,14 +14,12 @@ app.get(`/`, (req, res) => {
 app.post(`/users`, async (req, res) => {
   try {
     const result = await prisma.users.create({
-      data: {
-        ...req.body,
-      },
+      data: { ...req.body },
     })
     res.json(result)
   } catch (err) {
     console.error(err)
-    res.status(400).send('bad request')
+    res.sendStatus(400)
   }
 })
 
@@ -35,7 +33,7 @@ app.get(`/users/:user_id`, async (req, res) => {
   if (user) {
     res.json(user)
   } else {
-    res.status(404).send('not found')
+    res.sendStatus(404)
   }
 })
 
@@ -50,7 +48,7 @@ app.get(`/users/:user_id/todos`, async (req, res) => {
   if (todoItems) {
     res.json(todoItems)
   } else {
-    res.status(404).send('not found')
+    res.sendStatus(404)
   }
 })
 
@@ -66,7 +64,7 @@ app.post(`/users/:user_id/todos`, async (req, res) => {
     res.json(result)
   } catch (err) {
     console.error(err)
-    res.status(400).send('bad request')
+    res.sendStatus(400)
   }
 })
 
@@ -79,10 +77,53 @@ app.get(`/users/:user_id/todos/:todo_id`, async (req, res) => {
       user_id: author,
     },
   })
-  if (todos.length === 0) {
+  if (todos.length === 1) {
     res.json(todos[0])
   } else {
-    res.status(404).send('not found')
+    res.sendStatus(404)
+  }
+})
+
+app.put(`/users/:user_id/todos/:todo_id`, async (req, res) => {
+  const { user_id, todo_id } = req.params
+  const author: UserWhereInput = { user_id: Number(user_id) }
+  const todos = await prisma.todoItems.findMany({
+    where: {
+      todo_id: Number(todo_id),
+      user_id: author,
+    },
+  })
+  if (todos.length === 1) {
+    const todo = await prisma.todoItems.update({
+      where: {
+        todo_id: todos[0].todo_id,
+      },
+      data: { ...req.body },
+    })
+    res.json(todo)
+  } else {
+    res.sendStatus(404)
+  }
+})
+
+app.delete(`/users/:user_id/todos/:todo_id`, async (req, res) => {
+  const { user_id, todo_id } = req.params
+  const author: UserWhereInput = { user_id: Number(user_id) }
+  const todos = await prisma.todoItems.findMany({
+    where: {
+      todo_id: Number(todo_id),
+      user_id: author,
+    },
+  })
+  if (todos.length === 1) {
+    const todo = await prisma.todoItems.delete({
+      where: {
+        todo_id: todos[0].todo_id,
+      },
+    })
+    res.sendStatus(204)
+  } else {
+    res.sendStatus(404)
   }
 })
 
