@@ -1,7 +1,7 @@
 version: '3'
 services:
   postgres:
-    image: postgres:10.6-alpine
+    build: dockerfiles/postgres
     restart: 'no'
     ports:
       - '5432:5432'
@@ -10,8 +10,6 @@ services:
       POSTGRES_USER: prisma
       POSTGRES_PASSWORD: prisma
     volumes:
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
-      - ./init.sh:/docker-entrypoint-initdb.d/init.sh
       - postgres:/var/lib/postgresql/data
 volumes:
   postgres: ~
