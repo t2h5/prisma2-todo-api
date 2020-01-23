@@ -36,24 +36,23 @@ Express running `localhost:3000`.
 
 ```bash
 $ curl 'http://localhost:3000/'
+
 hello
 ```
 
 ### create user
 
 ```bash
-$ curl -XPOST 'http://localhost:3000/users' \
-       -H 'Content-type: application/json' \
-       -d '{"name": "me"}'
+$ curl -XPOST 'http://localhost:3000/users' -H 'Content-type: application/json' -d '{"name": "me"}'
+
 {"name":"me","user_id":1}
 ```
 
 ### create user's todo
 
 ```bash
-$ curl -XPOST 'http://localhost:3000/users/1/todos' \
-       -H 'Content-type: application/json' \
-       -d '{"text": "say hello"}'
+$ curl -XPOST 'http://localhost:3000/users/1/todos' -H 'Content-type: application/json' -d '{"text": "say hello"}'
+
 {"text":"say hello","todo_id":1}
 ```
 
@@ -61,5 +60,6 @@ $ curl -XPOST 'http://localhost:3000/users/1/todos' \
 
 ```bash
 $ curl 'http://localhost:3000/users/1/todos'
-{"text":"say hello","todo_id":1}
+
+[{"text":"say hello","todo_id":1}]
 ```
