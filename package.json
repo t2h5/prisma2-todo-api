@@ -8,6 +8,7 @@
     "generate": "prisma2 generate",
     "postinstall": "npm -s run generate",
     "introspect": "prisma2 introspect",
+    "studio": "prisma2 studio --experimental",
     "dev": "ts-node src/index.ts",
     "clean": "rm -rf dist",
     "build": "npm -s run clean && npm -s run generate && tsc"

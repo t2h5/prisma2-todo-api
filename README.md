@@ -96,3 +96,8 @@ $ curl -XPUT 'http://localhost:3000/users/1/todos/1' -H 'Content-type: applicati
 $ curl -XDELETE 'http://localhost:3000/users/1/todos/1'
 ```
 
+### prisma studio
+
+```bash
+$ npm run studio
+```
