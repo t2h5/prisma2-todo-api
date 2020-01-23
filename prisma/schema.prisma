@@ -15,6 +15,6 @@ model todos {
 
 model users {
   name    String
-  user_id Int     @id
+  user_id Int     @id @default(cuid())
   todoses todos[]
 }
