@@ -46,59 +46,15 @@ hello
 
 ### operations
 
-- create user
-
-```bash
-$ curl -XPOST 'http://localhost:3000/users' -H 'Content-type: application/json' -d '{"name": "me"}'
-
-{"name":"me","user_id":1}
-```
-
-- get user
-
-```bash
-$ curl 'http://localhost:3000/users/1'
-
-{"name":"me","user_id":1}
-```
-
-- create user's todo
-
-```bash
-$ curl -XPOST 'http://localhost:3000/users/1/todos' -H 'Content-type: application/json' -d '{"text": "say hello"}'
-
-{"text":"say hello","todo_id":1}
-```
-
-- get user's todos
-
-```bash
-$ curl 'http://localhost:3000/users/1/todos'
-
-[{"text":"say hello","todo_id":1}]
-```
-
-- get user's todo
-
-```bash
-$ curl 'http://localhost:3000/users/1/todos/1'
-
-{"text":"say hello","todo_id":1}
-```
-
-- update user's todo
-
-```bash
-$ curl -XPUT 'http://localhost:3000/users/1/todos/1' -H 'Content-type: application/json' -d '{"text": "say good bye"}'
-
-{"text":"say good bye","todo_id":1}
-```
-
-- delete user's todo
-
-```bash
-$ curl -XDELETE 'http://localhost:3000/users/1/todos/1'
-```
+|               | method | path                           | request                  | response                            |
+|---------------|--------|--------------------------------|--------------------------|-------------------------------------|
+| create user   | POST   | /users                         | {"name": "me"}           | {"name":"me","user_id":1}           |
+| get user      | GET    | /users/:user_id                | -                        | {"name":"me","user_id":1}           |
+| create todo   | POST   | /users/:user_id/todos          | {"text": "say hello"}    | {"text":"say hello","todo_id":1}    |
+| get todo list | GET    | /users/:user_id/todos          | -                        | [{"text":"say hello","todo_id":1}]  |
+| get todo      | GET    | /users/:user_id/todos/:todo_id | -                        | {"text":"say hello","todo_id":1}    |
+| update todo   | PUT    | /users/:user_id/todos/:todo_id | {"text": "say good bye"} | {"text":"say good bye","todo_id":1} |
+| delete todo   | DELETE | /users/:user_id/todos/:todo_id | -                        | -                                   |
 
 ### prisma studio
 
