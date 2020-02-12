@@ -46,15 +46,15 @@ hello
 
 ### operations
 
-|               | method | path                           | request                  | response                            |
-|---------------|--------|--------------------------------|--------------------------|-------------------------------------|
-| create user   | POST   | /users                         | {"name": "me"}           | {"name":"me","user_id":1}           |
-| get user      | GET    | /users/:user_id                | -                        | {"name":"me","user_id":1}           |
-| create todo   | POST   | /users/:user_id/todos          | {"text": "say hello"}    | {"text":"say hello","todo_id":1}    |
-| get todo list | GET    | /users/:user_id/todos          | -                        | [{"text":"say hello","todo_id":1}]  |
-| get todo      | GET    | /users/:user_id/todos/:todo_id | -                        | {"text":"say hello","todo_id":1}    |
-| update todo   | PUT    | /users/:user_id/todos/:todo_id | {"text": "say good bye"} | {"text":"say good bye","todo_id":1} |
-| delete todo   | DELETE | /users/:user_id/todos/:todo_id | -                        | -                                   |
+|               | method | path                         | request                  | response                            |
+|---------------|--------|------------------------------|--------------------------|-------------------------------------|
+| create user   | POST   | /users                       | {"name": "me"}           | {"name":"me","user_id":1}           |
+| get user      | GET    | /users/:userId               | -                        | {"name":"me","user_id":1}           |
+| create todo   | POST   | /users/:userId/todos         | {"text": "say hello"}    | {"text":"say hello","todo_id":1}    |
+| get todo list | GET    | /users/:userId/todos         | -                        | [{"text":"say hello","todo_id":1}]  |
+| get todo      | GET    | /users/:userId/todos/:todoId | -                        | {"text":"say hello","todo_id":1}    |
+| update todo   | PUT    | /users/:userId/todos/:todoId | {"text": "say good bye"} | {"text":"say good bye","todo_id":1} |
+| delete todo   | DELETE | /users/:userId/todos/:todoId | -                        | -                                   |
 
 ### prisma studio
 
