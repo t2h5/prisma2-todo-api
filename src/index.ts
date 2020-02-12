@@ -23,11 +23,11 @@ app.post(`/users`, async (req, res) => {
   }
 })
 
-app.get(`/users/:user_id`, async (req, res) => {
-  const { user_id } = req.params
+app.get(`/users/:userId`, async (req, res) => {
+  const { userId } = req.params
   const user = await prisma.user.findOne({
     where: {
-      user_id: Number(user_id),
+      user_id: Number(userId),
     },
   })
   if (user) {
@@ -37,9 +37,9 @@ app.get(`/users/:user_id`, async (req, res) => {
   }
 })
 
-app.get(`/users/:user_id/todos`, async (req, res) => {
-  const { user_id } = req.params
-  const author: UserWhereInput = { user_id: Number(user_id) }
+app.get(`/users/:userId/todos`, async (req, res) => {
+  const { userId } = req.params
+  const author: UserWhereInput = { user_id: Number(userId) }
   const todoItems = await prisma.todoItem.findMany({
     where: {
       user_id: author,
@@ -52,13 +52,13 @@ app.get(`/users/:user_id/todos`, async (req, res) => {
   }
 })
 
-app.post(`/users/:user_id/todos`, async (req, res) => {
-  const { user_id } = req.params
+app.post(`/users/:userId/todos`, async (req, res) => {
+  const { userId } = req.params
   try {
     const result = await prisma.todoItem.create({
       data: {
         ...req.body,
-        user_id: { connect: { user_id: Number(user_id) } },
+        user_id: { connect: { user_id: Number(userId) } },
       },
     })
     res.json(result)
@@ -68,12 +68,12 @@ app.post(`/users/:user_id/todos`, async (req, res) => {
   }
 })
 
-app.get(`/users/:user_id/todos/:todo_id`, async (req, res) => {
-  const { user_id, todo_id } = req.params
-  const author: UserWhereInput = { user_id: Number(user_id) }
+app.get(`/users/:userId/todos/:todoId`, async (req, res) => {
+  const { userId, todoId } = req.params
+  const author: UserWhereInput = { user_id: Number(userId) }
   const todos = await prisma.todoItem.findMany({
     where: {
-      todo_id: Number(todo_id),
+      todo_id: Number(todoId),
       user_id: author,
     },
   })
@@ -84,12 +84,12 @@ app.get(`/users/:user_id/todos/:todo_id`, async (req, res) => {
   }
 })
 
-app.put(`/users/:user_id/todos/:todo_id`, async (req, res) => {
-  const { user_id, todo_id } = req.params
-  const author: UserWhereInput = { user_id: Number(user_id) }
+app.put(`/users/:userId/todos/:todoId`, async (req, res) => {
+  const { userId, todoId } = req.params
+  const author: UserWhereInput = { user_id: Number(userId) }
   const todos = await prisma.todoItem.findMany({
     where: {
-      todo_id: Number(todo_id),
+      todo_id: Number(todoId),
       user_id: author,
     },
   })
@@ -106,12 +106,12 @@ app.put(`/users/:user_id/todos/:todo_id`, async (req, res) => {
   }
 })
 
-app.delete(`/users/:user_id/todos/:todo_id`, async (req, res) => {
-  const { user_id, todo_id } = req.params
-  const author: UserWhereInput = { user_id: Number(user_id) }
+app.delete(`/users/:userId/todos/:todoId`, async (req, res) => {
+  const { userId, todoId } = req.params
+  const author: UserWhereInput = { user_id: Number(userId) }
   const todos = await prisma.todoItem.findMany({
     where: {
-      todo_id: Number(todo_id),
+      todo_id: Number(todoId),
       user_id: author,
     },
   })
