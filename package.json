@@ -28,7 +28,7 @@
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-prettier": "^3.1.2",
     "prettier": "^1.19.1",
-    "prisma2": "2.0.0-preview021",
+    "prisma2": "2.0.0-preview022",
     "ts-node-dev": "^1.0.0-pre.44",
     "typescript": "3.7.5"
   },
