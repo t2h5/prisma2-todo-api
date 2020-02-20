@@ -127,6 +127,4 @@ app.delete(`/users/:userId/todos/:todoId`, async (req, res) => {
   }
 })
 
-const server = app.listen(3000, () =>
-  console.log('server ready at: http://localhost:3000'),
-)
+app.listen(3000, () => console.log('server ready at: http://localhost:3000'))
