@@ -1,7 +1,7 @@
 {
   "name": "prisma2-todo-api",
   "engines": {
-    "node": ">=10.0.0"
+    "node": ">= 14"
   },
   "scripts": {
     "lint": "eslint src --ext .ts",
