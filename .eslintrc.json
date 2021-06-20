@@ -1,20 +1,20 @@
 {
-  "root": true,
-  "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint"],
-  "extends": [
+  "env":  {
+    "browser":  true,
+    "es2021":  true
+  },
+  "extends":  [
     "eslint:recommended",
-    "plugin:@typescript-eslint/eslint-recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:prettier/recommended",
-    "prettier/@typescript-eslint"
+    "plugin:@typescript-eslint/recommended"
   ],
-  "rules": {
-    "@typescript-eslint/camelcase": [
-      "error",
-      {
-        "properties": "never"
-      }
-    ]
+  "parser":  "@typescript-eslint/parser",
+  "parserOptions":  {
+    "ecmaVersion":  12,
+    "sourceType":  "module"
+  },
+  "plugins":  [
+    "@typescript-eslint"
+  ],
+  "rules":  {
   }
 }
