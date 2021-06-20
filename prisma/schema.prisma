@@ -10,7 +10,7 @@ generator client {
   provider = "prisma-client-js"
 }
 
-model Todo {
+model todos {
   id Int @id @default(autoincrement())
 
   text String
@@ -18,11 +18,11 @@ model Todo {
   createdAt DateTime @default(now())
   updatedAt DateTime
 
-  user User @relation(fields: [userId], references: [id])
+  user users @relation(fields: [userId], references: [id])
   userId Int
 }
 
-model User {
+model users {
   id Int @id @default(autoincrement())
 
   email String @unique
@@ -30,5 +30,5 @@ model User {
 
   createdAt DateTime @default(now())
 
-  todos Todo[]
+  todos todos[]
 }
