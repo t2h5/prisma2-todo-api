@@ -1,36 +1,12 @@
 {
   "name": "prisma2-todo-api",
-  "engines": {
-    "node": ">= 14"
+  "devDependencies": {
+    "@types/node": "^15.12.4",
+    "prisma": "^2.25.0",
+    "ts-node": "^10.0.0",
+    "typescript": "^4.3.4"
   },
   "scripts": {
-    "lint": "eslint src --ext .ts",
-    "generate": "prisma2 generate",
-    "postinstall": "npm -s run generate",
-    "introspect": "prisma2 introspect",
-    "studio": "prisma2 studio --experimental",
-    "dev": "ts-node-dev src/index.ts",
-    "clean": "rm -rf dist",
-    "build": "npm -s run clean && npm -s run generate && tsc"
-  },
-  "dependencies": {
-    "@prisma/client": "2.0.0-preview024",
-    "@types/node": "13.9.1",
-    "body-parser": "1.19.0",
-    "express": "4.17.1"
-  },
-  "devDependencies": {
-    "@types/body-parser": "1.19.0",
-    "@types/express": "4.17.3",
-    "@typescript-eslint/eslint-plugin": "^2.23.0",
-    "@typescript-eslint/parser": "^2.23.0",
-    "eslint": "^6.8.0",
-    "eslint-config-prettier": "^6.10.0",
-    "eslint-plugin-prettier": "^3.1.2",
-    "prettier": "^1.19.1",
-    "prisma2": "2.0.0-preview024",
-    "ts-node-dev": "^1.0.0-pre.44",
-    "typescript": "3.8.3"
-  },
-  "license": "MIT"
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
 }
