@@ -10,7 +10,25 @@ generator client {
   provider = "prisma-client-js"
 }
 
+model Todo {
+  id Int @id @default(autoincrement())
+
+  text String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime
+
+  user User @relation(fields: [userId], references: [id])
+  userId Int
+}
+
 model User {
-  id Int @default(autoincrement()) @id
+  id Int @id @default(autoincrement())
+
+  email String @unique
   name String?
+
+  createdAt DateTime @default(now())
+
+  todos Todo[]
 }
